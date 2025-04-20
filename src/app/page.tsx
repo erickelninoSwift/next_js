@@ -18,13 +18,13 @@ export default async function Home() {
   });
   return (
     <div>
-      <div>
-        <h1>Home</h1>
+      <div className="mt-5">
+        <h1 className="text-xl font-bold bg-gray-200 p-5">Home</h1>
       </div>
       <div className="w-full flex justify-end">
         <Link
           href={"/snippets/new"}
-          className="w-[150px] bg-gray-50 flex justify-center items-center p-2 h-[35px] mt-3 border rounded-md "
+          className="w-[150px] bg-gray-50 flex justify-center items-center p-2 h-[35px] mt-5 mb-4 border rounded-md "
         >
           {" "}
           New Snippet
