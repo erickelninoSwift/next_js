@@ -21,22 +21,23 @@ const SnippetsEditForm = ({ snippet }: ISnippetEdit) => {
   const handleEditorChange = (value: string = "") => {
     setSnippetCode(value);
   };
-
-  const handleClick = () => {
-    startTransition(async () => {
-      await actions.updateSnippet(snippetCode ?? "");
-    });
-  };
+  const createSnippetAction = actions.updateSnippet.bind(
+    null,
+    snippet.id.toString(),
+    snippetCode ?? ""
+  );
 
   return (
     <div className="mt-10">
       <div className=" mb-5 flex justify-end">
-        <button
-          className="border rounded w-[120px] h-[40px] flex justify-center items-center"
-          onClick={() => handleClick}
-        >
-          Save
-        </button>
+        <form action={createSnippetAction}>
+          <button
+            type="submit"
+            className="border rounded w-[120px] h-[40px] flex justify-center items-center"
+          >
+            Save
+          </button>
+        </form>
       </div>
       <Editor
         height={"40vh"}
