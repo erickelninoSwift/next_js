@@ -34,7 +34,11 @@ export default function SnippetCreatePage() {
             id="code"
           />
         </div>
-        {formState.message && <span>{formState.message}</span>}
+        {formState.message && (
+          <span className="my-2 p-2 bg-red-300 text-black border border-red-300 rounded  ">
+            {formState.message}
+          </span>
+        )}
         <button type="submit" className="rounded p-2 bg-blue-200">
           Create
         </button>
