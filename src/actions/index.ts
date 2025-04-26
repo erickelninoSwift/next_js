@@ -10,6 +10,7 @@ export const updateSnippet = async (id: string, code: string) => {
     where: { id: parseInt(id) as number },
     data: { code },
   });
+  revalidatePath(`/snippets/${id}`);
   redirect(`/snippets/${id}`);
 };
 
