@@ -1,6 +1,8 @@
 "use server";
 import { db } from "@/db";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+
 export const updateSnippet = async (id: string, code: string) => {
   console.log(`code : ${code} and id: ${id}`);
   // update the data
@@ -15,6 +17,7 @@ export const deleteSnippetData = async (id: string) => {
   await db.snippet.delete({
     where: { id: parseInt(id) as number },
   });
+  revalidatePath("/");
   redirect(`/`);
 };
 
@@ -52,5 +55,6 @@ export async function createUser(
       };
     }
   }
+  revalidatePath("/");
   redirect("/");
 }

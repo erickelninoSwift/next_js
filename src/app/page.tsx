@@ -1,10 +1,13 @@
 import { db } from "@/db";
 import Link from "next/link";
+
+// export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const snippets = await db.snippet.findMany();
   const renderedSnippets = snippets.map((data) => {
     return (
-      <div>
+      <div key={data.id + "#200"}>
         <Link
           href={`/snippets/${data.id}`}
           key={data.id}
@@ -26,7 +29,6 @@ export default async function Home() {
           href={"/snippets/new"}
           className="w-[150px] bg-gray-50 flex justify-center items-center p-2 h-[35px] mt-5 mb-4 border rounded-md "
         >
-          {" "}
           New Snippet
         </Link>
       </div>
